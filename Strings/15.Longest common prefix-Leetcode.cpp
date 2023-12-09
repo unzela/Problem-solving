@@ -13,15 +13,16 @@ string longestCommonPrefix(vector<string> &s) {
   while (true) {
     char curr_char = 0;
     for (auto str : s) {
-      if (i >= str.size()) {
-        curr_char = 0; // Out of bound
+      if (i >= str.size()) { // Out of bound for any strings
+        curr_char = 0;       // Need some condition to get out of while loop
         break;
       }
 
       if (curr_char == 0) { // Just started
         curr_char = str[i];
-      } else if (str[i] != curr_char) {
-        curr_char = 0; // Different
+      } else if (str[i] !=
+                 curr_char) { // if(str[i] == curr_char) dont do anything
+        curr_char = 0;        // Different
         break;
       }
     }
