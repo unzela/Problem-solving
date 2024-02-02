@@ -23,6 +23,23 @@ int firstOccurence(vector<int> arr, int target) {
   return ans;
 }
 
+int lowerBound(vector<int> arr, int n, int x) {
+  int low = 0;
+  int high = n - 1;
+  int ans = n; // If such index is not found, then return n ie size of array
+
+  while (low <= high) {
+    int mid = low + (high - low) / 2;
+    if (arr[mid] >= x) { // Maybe an ans
+      ans = mid;
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+  return ans;
+}
+
 int main() {
   vector<int> arr{2, 3, 3, 5, 5, 5, 5, 6, 7};
   int target = 5;
