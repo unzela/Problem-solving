@@ -6,16 +6,20 @@ void sortStackUsingAnotherStack(stack<int>& s1) {
     stack<int> s2;
 
     while (!s1.empty()) {
+        // Pop the top element from the original stack
         int temp = s1.top();
         s1.pop();
         
+        // Move elements from s2 to s1 which are greater than temp
         while (!s2.empty() && s2.top() > temp) {
             s1.push(s2.top());
             s2.pop();
         }
+        // Push temp in s2
         s2.push(temp);
     }
     
+    // Copy elements from s2 back to s1 to maintain sorted order
     while (!s2.empty()) {
         s1.push(s2.top());
         s2.pop();
